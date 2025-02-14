@@ -47,6 +47,8 @@ pip install -r requirements.txt
 ### 4. Rodar a Aplicação
 Agora que as dependências estão instaladas, você pode rodar a aplicação de duas formas: utilizando Docker ou diretamente no terminal.
 
+##### Lembre-se de ajustar as credencias de acesso no arquivo config.env.
+
 #### 4.1 Rodar a Aplicação com Docker/Docker Compose
 Pré-requisitos: 
 
