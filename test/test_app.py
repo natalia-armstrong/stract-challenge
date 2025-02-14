@@ -4,7 +4,6 @@ from app import app
 
 class FlaskAppTestCase(unittest.TestCase):
 
-    # Função para configurar mocks
     def mock_services(self):
         return {
             "platforms": [{"text": "Facebook Ads", "value": "meta_ads"}],
@@ -13,7 +12,6 @@ class FlaskAppTestCase(unittest.TestCase):
             "insights": [{"clicks": 100, "spend": 50.0}]
         }
 
-    # Função auxiliar para testar as rotas
     def run_test(self, route):
         mock_data = self.mock_services()
 
@@ -25,22 +23,17 @@ class FlaskAppTestCase(unittest.TestCase):
             with app.test_client() as client:
                 response = client.get(route)
                 self.assertEqual(response.status_code, 200)
-                # Verifica se o tipo de conteúdo começa com 'text/csv'
                 self.assertTrue(response.content_type.startswith('text/csv'))
 
-    # Teste para o endpoint "/geral"
     def test_get_all_ads(self):
         self.run_test('/geral')
 
-    # Teste para o endpoint "/geral/resumo"
     def test_get_summary_ads(self):
         self.run_test('/geral/resumo')
 
-    # Teste para o endpoint "/<platform>"
     def test_get_platform_ads(self):
         self.run_test('/meta_ads')
 
-    # Teste para o endpoint "/<platform>/resumo"
     def test_get_platform_summary(self):
         self.run_test('/meta_ads/resumo')
 
