@@ -47,23 +47,27 @@ pip install -r requirements.txt
 ### 4. Rodar a Aplicação
 Agora que as dependências estão instaladas, você pode rodar a aplicação de duas formas: utilizando Docker ou diretamente no terminal.
 
-#### 4.1 Rodar a Aplicação com Docker
+#### 4.1 Rodar a Aplicação com Docker/Docker Compose
+Pré-requisitos: 
 
-Abra o [Docker Desktop](https://www.docker.com/products/docker-desktop/) e certifique-se de que o Docker esteja rodando.
+1. Docker: Certifique-se de que o Docker esteja instalado na sua máquina. Caso não tenha, siga as instruções de instalação do Docker em docker.com.
+
+2. Docker Compose: O Docker Compose também precisa estar instalado. Se necessário, instale-o seguindo as instruções em docker-compose install.
 
 No terminal, navegue até a raiz do projeto e execute os seguintes passos:
 
-Crie a imagem Docker:
-```bash
-docker build -t nome-imagem .
-```
+No diretório raiz do projeto, onde está o arquivo docker-compose.yml, execute o seguinte comando para construir a imagem do Docker: 
 Rode o container com a aplicação:
 ```bash
-docker run -p 5000:5000 nome-imagem
+docker-compose up --build
 ```
-(Caso queira usar portas diferentes, basta ajustar o número da porta conforme necessário.)
 
 Abra o navegador e acesse a aplicação através do endereço http://127.0.0.1:5000.
+
+ Dica: Caso queira rodar a aplicação em outra porta, edite o arquivo docker-compose.yml e altere a linha:
+
+    ports:
+    - "5000:5000"  # Altere para "8080:5000" se quiser rodar na porta 8080, por exemplo.
 
 #### 4.2 Rodar a Aplicação Localmente (sem Docker)
 Caso prefira rodar a aplicação diretamente no terminal, execute o seguinte comando:
@@ -147,7 +151,16 @@ Platform,Ad Name,Clicks,Impressions,Spend,...
 Facebook,,30,2500,500,...
 YouTube,,5,500,100,...
 ```
+
+### Sobre os Campos com Nomes Similares
+Durante o processo de construção da aplicação, percebi que a API retorna alguns campos/colunas com nomes semelhantes, porém com diferentes capitalizações. Por exemplo, o campo "Spend" pode aparecer como "spend" em algumas plataformas.
+
+Apesar disso, optei por não realizar nenhuma formatação para padronizar ou unificar esses nomes de campos (como capitalizar todas as palavras ou transformar em minúsculas), pois o desafio não especificou nenhuma exigência nesse sentido. Portanto, as colunas foram mantidas exatamente como foram retornadas pela API, com a capitalização específica de cada plataforma.
+
+Caso fosse solicitado ou especificado no desafio, eu realizaria a padronização desses campos para garantir consistência em todo o conjunto de dados
+
 ### Conclusão
 Agora você pode acessar os relatórios dinâmicos das plataformas de anúncios, seja localmente ou por meio de um container Docker. Utilize os endpoints da API para visualizar os dados e gerar os relatórios necessários.
 
 Se houver dúvidas ou problemas, fique à vontade para abrir uma issue no repositório ou entrar em contato diretamente pelo email: natalia.armstronggg@gmail.com
+
