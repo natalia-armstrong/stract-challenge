@@ -28,4 +28,4 @@ jobs:
 
       - name: Run tests
         run: |
-          python -m unittest test.test_app 
+          python -m unittest src.test_app 

@@ -56,7 +56,7 @@ Pré-requisitos:
 
 No terminal, navegue até a raiz do projeto e execute os seguintes passos:
 
-No diretório raiz do projeto, onde está o arquivo docker-compose.yml, execute o seguinte comando para construir a imagem do Docker: 
+No diretório raiz do projeto, onde está o arquivo docker-compose.yml, execute o seguinte comando para construir a imagem do Docker (com o Docker Desktop aberto): 
 Rode o container com a aplicação:
 ```bash
 docker-compose up --build

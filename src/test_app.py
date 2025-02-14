@@ -1,5 +1,10 @@
 import unittest
 from unittest.mock import patch
+import sys
+import os
+
+# Adicionando o diretório 'src' ao sys.path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
 from app import app
 
 class FlaskAppTestCase(unittest.TestCase):
@@ -15,10 +20,10 @@ class FlaskAppTestCase(unittest.TestCase):
     def run_test(self, route):
         mock_data = self.mock_services()
 
-        with patch('app.get_platforms', return_value=mock_data["platforms"]), \
-             patch('app.get_accounts', return_value=mock_data["accounts"]), \
-             patch('app.get_fields', return_value=mock_data["fields"]), \
-             patch('app.get_insights', return_value=mock_data["insights"]):
+        with patch('routes.get_platforms', return_value=mock_data["platforms"]), \
+             patch('routes.get_accounts', return_value=mock_data["accounts"]), \
+             patch('routes.get_fields', return_value=mock_data["fields"]), \
+             patch('routes.get_insights', return_value=mock_data["insights"]):
 
             with app.test_client() as client:
                 response = client.get(route)

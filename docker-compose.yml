@@ -9,6 +9,8 @@ services:
       - .:/stract
     environment:
       - FLASK_ENV=development
+    env_file:
+      - config.env
     networks:
       - app-network
 

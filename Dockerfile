@@ -8,6 +8,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+COPY config.env .env
+
 EXPOSE 5000
 
-CMD ["python", "app.py"]
+CMD ["python", "src/app.py"]
