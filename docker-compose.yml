@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/stract
+    environment:
+      - FLASK_ENV=development
+    env_file:
+      - config.env
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
